@@ -1,0 +1,361 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.game-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 2.5em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.setup-panel, .playing-panel {
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.setup-panel h2, .playing-panel h2 {
+  color: #555;
+  margin-bottom: 15px;
+  font-size: 1.5em;
+}
+
+.setup-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.setup-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.setup-item label {
+  font-weight: 600;
+  color: #666;
+  font-size: 0.9em;
+}
+
+.value-input {
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+  transition: border-color 0.3s;
+}
+
+.value-input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin: 5px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: #5a6268;
+  transform: translateY(-2px);
+}
+
+.deal-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.btn-deal {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  color: white;
+  font-size: 1.2em;
+  padding: 15px 40px;
+}
+
+.btn-deal:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(17, 153, 142, 0.4);
+}
+
+.btn-no-deal {
+  background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+  color: white;
+  font-size: 1.2em;
+  padding: 15px 40px;
+}
+
+.btn-no-deal:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(235, 51, 73, 0.4);
+}
+
+.final-result {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.final-value {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #667eea;
+  margin: 10px 0;
+}
+
+.contestant-pick, .host-controls {
+  margin: 15px 0;
+}
+
+.contestant-pick p, .host-controls p {
+  margin-bottom: 10px;
+  color: #555;
+  font-size: 1.1em;
+}
+
+.info {
+  color: #667eea;
+  font-weight: 600;
+}
+
+.values-table-container {
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.values-table-container h3 {
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.values-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.values-table tbody {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.values-table tr {
+  background: white;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  transition: all 0.3s;
+}
+
+.values-table tr:hover {
+  border-color: #667eea;
+}
+
+.values-table tr.revealed-value {
+  background: #e9ecef;
+  opacity: 0.6;
+  text-decoration: line-through;
+}
+
+.values-table td {
+  padding: 10px;
+  text-align: center;
+  font-weight: 600;
+  color: #333;
+  font-size: 0.95em;
+}
+
+.values-table tr.revealed-value td {
+  color: #999;
+}
+
+.offer-display {
+  background: white;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  padding: 15px 20px;
+  margin: 15px 0;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.offer-label {
+  color: #666;
+  font-size: 0.9em;
+  margin-bottom: 5px;
+}
+
+.offer-amount {
+  color: #333;
+  font-size: 2em;
+  font-weight: bold;
+  margin: 0;
+}
+
+.boxes-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.box {
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 3px solid transparent;
+  position: relative;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.box:hover:not(.revealed):not(.contestant-box) {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  border-color: #fff;
+}
+
+.box.revealed {
+  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  cursor: default;
+  opacity: 0.7;
+}
+
+.box.contestant-box {
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  border-color: #ff6b6b;
+  border-width: 4px;
+  cursor: default;
+}
+
+.box-number {
+  font-size: 2em;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.box.revealed .box-number {
+  color: #333;
+  text-shadow: none;
+}
+
+.box-value {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
+  margin-top: 5px;
+}
+
+.box-value.reveal-animation {
+  animation: revealValue 3s ease-in-out;
+}
+
+@keyframes revealValue {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translateY(-30px);
+  }
+  30% {
+    opacity: 0.2;
+    transform: scale(0.6) translateY(-20px);
+  }
+  60% {
+    opacity: 0.6;
+    transform: scale(1.1) translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.contestant-label {
+  position: absolute;
+  bottom: 5px;
+  font-size: 0.7em;
+  background: rgba(255, 107, 107, 0.9);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .game-container {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  .boxes-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    max-width: 100%;
+  }
+
+  .box-number {
+    font-size: 1.5em;
+  }
+}
+
